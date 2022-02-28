@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <cuda_runtime.h>
 #include <helper_cuda.h>
+#include <helper_timer.h>
 
 __global__ void d_fun(int *g_data, int inc_value){
   int idx = threadIdx.x+blockDim.x*blockIdx.x;
@@ -49,15 +50,20 @@ int main()
   checkCudaErrors(cudaEventCreate(&start));
   checkCudaErrors(cudaEventCreate(&stop));
 
+  StopWatchInterface *timer = nullptr;
+  sdkCreateTimer(&timer);
+  sdkResetTimer(&timer);
 
   checkCudaErrors(cudaDeviceSynchronize());
   float gpu_time =0.0f;
 
+  sdkStartTimer(&timer);
   cudaEventRecord(start,0);
   cudaMemcpyAsync(d_a, a, nbytes, cudaMemcpyHostToDevice,0);
   d_fun<<<blocks, threads,0,0>>> (d_a, value);
   cudaMemcpyAsync(a, d_a, nbytes, cudaMemcpyDeviceToHost,0);
   cudaEventRecord(stop, 0);
+  sdkStopTimer(&timer);
 
 // CPU可在GPU计算的同时进行工作
   unsigned long int counter =0;
@@ -68,7 +74,7 @@ int main()
   checkCudaErrors(cudaEventElapsedTime(&gpu_time, start, stop));
 
   printf("time spent executing by the GPU: %.2fms\n", gpu_time);
-  // printf("time spent by CPU in CUDA calls: %.2f\n", sdkGetTimerValue(&timer));
+  printf("time spent by CPU in CUDA calls: %.2fms\n", sdkGetTimerValue(&timer));
   printf("CPU executed %lu iterations while waiting for GPU to finish\n",
          counter);
 
