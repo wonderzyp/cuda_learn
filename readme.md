@@ -1,3 +1,8 @@
+写在前面：
+---
+本仓库借鉴cuda官方案例学习，地址：[https://github.com/nvidia/cuda-samples](https://github.com/nvidia/cuda-samples)
+
+
 asyncAPI.cu
 ---
 令CPU和GPU同时运行
