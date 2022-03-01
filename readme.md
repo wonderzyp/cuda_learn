@@ -7,6 +7,9 @@ asyncAPI.cu
 ---
 令CPU和GPU同时运行
 
+vectorAdd
+---
+相同长度的向量相加：$A+B=C$
 
 helper_timer.h
 ---
