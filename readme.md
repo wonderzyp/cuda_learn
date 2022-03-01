@@ -28,3 +28,13 @@ bilateralFilter
 - 高斯增量(gaussian delta)
 - 欧几里得增量(euclidean delta)
 - 迭代次数
+
+
+#### BMP(Bitmap-File)文件格式
+数据分为四个部分
+- 位图文件头：文件的格式、大小等信息
+- 位图信息头：图像数据的尺寸、位平面数、压缩方式、颜色索引等信息
+- 调色板(color palette)：可选
+- 位图数据：图像数据区
+
+[BMP文件格式https://www.cnblogs.com/l2rf/p/5643352.html](https://www.cnblogs.com/l2rf/p/5643352.html)

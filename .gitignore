@@ -4,3 +4,4 @@ build/
 *.exp
 *.exe
 *.lib
+*.pdb
