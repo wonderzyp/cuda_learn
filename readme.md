@@ -38,3 +38,7 @@ bilateralFilter
 - 位图数据：图像数据区
 
 [BMP文件格式https://www.cnblogs.com/l2rf/p/5643352.html](https://www.cnblogs.com/l2rf/p/5643352.html)
+
+
+进展：
+- 2022-3-1 成功读取BMP文件，但暂时不知道如何处理数据，现转去VTK案例学习
