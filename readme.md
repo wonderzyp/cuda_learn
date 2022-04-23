@@ -1,4 +1,4 @@
-写在前面：
+写在前面：(即将合并至High-performance-computing)
 ---
 本仓库借鉴cuda官方案例学习，地址：[https://github.com/nvidia/cuda-samples](https://github.com/nvidia/cuda-samples)
 
